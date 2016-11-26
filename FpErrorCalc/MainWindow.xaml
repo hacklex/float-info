@@ -20,7 +20,7 @@
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <StackPanel Grid.Column="0" Margin="0 0 5 0">
-                        <Label>Input:</Label>
+                        <Label>Input (parsed as double, then cast to float):</Label>
                         <TextBox Text="{Binding UserInput, Mode=OneWayToSource, Converter={StaticResource FloatValueConverter}}"></TextBox>
                     </StackPanel>
                     <StackPanel Grid.Column="1" Margin="5 0 0 0">

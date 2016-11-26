@@ -135,7 +135,7 @@ namespace FpErrorCalc
         {
             if (value == DependencyProperty.UnsetValue) return DependencyProperty.UnsetValue;
             if (!(value is float)) return DependencyProperty.UnsetValue;
-            return ((float) value).ToString("E12");
+            return ((float) value).ToString("G12");
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
