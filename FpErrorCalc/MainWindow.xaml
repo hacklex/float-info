@@ -1,0 +1,66 @@
+﻿<Window x:Class="FpErrorCalc.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FpErrorCalc"
+        mc:Ignorable="d"
+        Height="320"
+        Width="517"
+        Title="FpErrorCalc">
+    <Window.Resources>
+        <local:FloatValueConverter x:Key="FloatValueConverter"></local:FloatValueConverter>
+    </Window.Resources>
+    <TabControl>
+            <TabItem Header="float">
+                <StackPanel Margin="10">
+                    <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0" Margin="0 0 5 0">
+                        <Label>Input:</Label>
+                        <TextBox Text="{Binding UserInput, Mode=OneWayToSource, Converter={StaticResource FloatValueConverter}}"></TextBox>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Margin="5 0 0 0">
+                        <Label>Nearest float:</Label>
+                        <TextBox Text="{Binding NearestValue, Mode=OneWay, Converter={StaticResource FloatValueConverter}}" IsReadOnly="True"></TextBox>
+                    </StackPanel>
+                </Grid>
+                    <GroupBox Header="Info">
+                        <StackPanel> 
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0" Margin="0 0 5 0">
+                                    <Label>Largest Addition-neutral value:</Label>
+                                <TextBox Text="{Binding LargestAdditionNeutral, Mode=OneWay, Converter={StaticResource FloatValueConverter}}" IsReadOnly="True"></TextBox>
+                                    <Label>Prev Float:</Label>
+                                <TextBox Text="{Binding PrevValue, Mode=OneWay, Converter={StaticResource FloatValueConverter}}" IsReadOnly="True"></TextBox>
+                                </StackPanel>
+                                <StackPanel Grid.Column="1" Margin="5 0 0 0">
+                                    <Label>Largest Subtraction-neutral value:</Label>
+                                <TextBox Text="{Binding LargestSubtractionNeutral, Mode=OneWay, Converter={StaticResource FloatValueConverter}}" IsReadOnly="True"></TextBox>
+                                <Label>Next Float:</Label>
+                                <TextBox Text="{Binding NextValue, Mode=OneWay, Converter={StaticResource FloatValueConverter}}" IsReadOnly="True"></TextBox>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </GroupBox>
+                    <TextBlock Margin="0 10" TextWrapping="Wrap">
+                        Each valid finite float value X (except float.MinValue) have a single predecessor Y, the distance between X and Y
+                        being the doubled-error-margin of X in float.
+                        <LineBreak />
+                        So, 1e+32 + 1 == 1e+32, because 1e+0 falls far beyond the error margin of 1e+32.
+                        <LineBreak />
+                        <LineBreak />
+                        © Alexey Rozanov, 2016
+
+                    </TextBlock>
+                </StackPanel>
+            </TabItem>
+    </TabControl>
+</Window>
